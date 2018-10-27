@@ -1,42 +1,126 @@
+:root {
+    --rowNum: 4;
+    --colNum: 10;
+    --gridHeight: 96px;
+    --gridGap: 8px;     /* for demonstrating the use of CSS Variables */
+  }
+
 html {
     height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-    background: rgb(122, 111, 112);
+    /* background: rgb(122, 111, 112); */
+    background: #ECF0F1;
     height: 100%;
     margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
 }
+
 
 h1{
     text-align: center;
-    padding: 10px;
-    margin: 20px auto;
+    padding: 2px 5px;
+    margin: 0;
     color: white;
-    background: linear-gradient(to right, #3d2626, rgb(87, 95, 87));
+    font-size: 1.8rem;
+    background: linear-gradient(rgb(52, 150, 200), rgb(100,200,210));
 }
+
+ul {
+    background: #ccc;
+    padding: 0;
+    margin: 10px 0;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-template-rows: repeat(auto-fill, auto);
+    justify-items: stretch;
+   
+}
+
+li:first-child {margin-left: auto;}
+li:nth-child(2) {margin-left: auto;}
+li:nth-child(3) {margin: 0 auto;}
+
+
+ul li{
+    display: inline;
+    list-style: none;
+    border-style: none;
+    align-self: center;
+    font-size: 1.2rem;
+    letter-spacing: 0.1rem;
+}
+
+ul button {
+    background: #CCC;
+    height: inherit;
+    padding: 2px 5px;
+    font-size: 1.1rem;
+    outline-style: none;
+    border: none;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.6s;
+}
+
+ul button:hover {
+    background-color: black;
+    color: white;
+}
+
+input {
+    border-radius: 1.3rem;
+    height: 1.2rem;
+    outline-style: none;
+    padding: 0.1rem 0.5rem;
+}
+
+
 
 aside {
-    border: 1px solid black;    
-    width: 20%;
-    font-size: 15px;
-    float: left;
-    margin: 0 auto;
+    grid-area: aside;
+    align-items: center;
+    justify-items: center;
+    align-self: center;
     text-align: center;
-    vertical-align: middle;
-    line-height: 3em;
+    padding: 0.4rem;
 }
 
-.main {
-    width: 100%;
-    height: 100vh;
+aside p {
+    margin: 1.4rem 0;
 }
 
-.container {
-    border: 1px solid black;
-    width: 60%;
-    margin: 0 auto;
-    float: left;
+.wrapper {
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr 1fr;
+    grid-template-areas: 
+            'aside section section name'
+            'aside section section players';
+}
+
+section {
+    display: grid;
+    grid-area: section;
+    grid-template-columns: repeat(var(--colNum), 1fr);
+    grid-template-rows: repeat(auto-fill, var(--gridHeight));
+    grid-gap: 8px;
+    grid-column-gap: var(--gridGap);
+    justify-items: stretch;
+    align-items: center;
+}
+
+.square {
+    border: 1px solid #111;
+    box-shadow: 3px 3px #888888;
+    border-radius: 1.5rem;
+    line-height: var(--gridHeight);
+    text-align: center;
+    font-size: 300%;
+    /* background: #fff; */
+    background: #3498DB;
 }
 
 .disabledbutton {
@@ -44,34 +128,48 @@ aside {
     opacity: 0.4;
 }
 
+.selected {
+    background: black;
+    color: #fff;
+}
+
 .name {
-    float: left;
-    width: 19%;
+    grid-area: name;
+    justify-self: center;
+    align-self: center;
     text-align: center;
-    line-height: 3em;
-    margin: 0 auto;
+    padding: 0.4rem;
+}
+
+.safeStatus {
+    border: 2px solid green;
+    background: rgb(65, 212, 65);
+    color: #111;
+    border-radius: 1.3rem;
+}
+
+.lostStatus {
+    border: 2px solid red;
+    background: rgb(202, 67, 67);
+    color: #CCC;
+    border-radius: 1.3rem;
+}
+
+.name > * {
+    margin: 0.6rem 0;
 }
 
 .players {
-    border: 1px solid black;
+    grid-area: players;
+    justify-self: center;
+    align-self: start;
     text-align: center;
-    line-height: 3em;
-    width: 19%;
-    margin: 0 auto;
-    float: left;
+    padding: 0.4rem;
+    font-weight: 700;
 }
 
-.square {
-    width: 23%;
-    border-radius: 15px;
-    float: left;
-    height: 150px;
-    line-height: 150px;
-    background: white;
-    margin:  1%;
-    text-align: center;
-    font-size: 300%;
-    color: blueviolet;
+.players > * {
+    margin: 0.6rem 0;
 }
 
 .lostSquare {
@@ -86,4 +184,22 @@ aside {
 
 .cut {
         text-decoration: line-through red;
+        color: #3498DB;
+}
+
+#saveName {
+    padding: 10px;
+    color: #fff;
+    background: #111;
+    box-shadow: 2px 3px #bbb;
+    border-radius: 1.3rem;
+    outline-style: none;
+    font-weight: 700;
+}
+
+@media(max-width: 800px){
+    section {
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(auto, 50px);
+    }
 }

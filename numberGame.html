@@ -6,55 +6,49 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Number Game - Beta</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,700" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="numberGame.css" />
 </head>
 
 <body onload="disableContainer()">
-    <h1> Welcome to Number Game</h1>
-
-    <div class="main">
+    <h1> Guess my Number</h1>
+    <ul>
+        <li><button id="reset" onClick="window.location.reload()">Reset Game</button></li>
+        <li><strong>Select Mode:-</strong></li>
+        <li><button id="less"> Easy</button></li>
+        <li><button id="more" class="selected"> Hard</button></li>
+    </ul>
+    <div class="wrapper">
 
         <aside>
-            <p class="pStatus">1) Enter the names of 4 players.</p>
-            <p class="pStatus">2) Each player have to enter one number between 1 and 12</p>
-            <p class="pStatus">3) After that, each player will select one Numbered 
-                                Square excluding his own selected number.</p>
-            <p class="pStatus">4) The player who's number is not matched at the end
-                                will lose and have to give a treat to his friends :) </p>
+            <p class="pStatus">1) Enter the names of players.</p>
+            <p class="pStatus">2) Each player have to enter one number within the range of Box Numbers.</p>
+            <p class="pStatus">3) After that, each player will select 1 Box Number excluding his own selected number.</p>
+            <p class="pStatus">4) The player who's number is not selected by anyone will lose and have to
+                give a treat to other players :) </p>
         </aside>
 
         <section class="container">
-            <div class="square"><span>1</span></div>
-            <div class="square"><span>2</span></div>
-            <div class="square"><span>3</span></div>
-            <div class="square"><span>4</span></div>
-            <div class="square"><span>5</span></div>
-            <div class="square"><span>6</span></div>
-            <div class="square"><span>7</span></div>
-            <div class="square"><span>8</span></div>
-            <div class="square"><span>9</span></div>
-            <div class="square"><span>10</span></div>
-            <div class="square"><span>11</span></div>
-            <div class="square"><span>12</span></div>
+            <!-- Squares will go here from Javascript generateSquares() -->
         </section>
 
         <div class="name">
             <input type="text" id="pname" placeholder="Enter player name" required><br>
-            <button>Save Name</button>
+            <button id="saveName">Save Name</button>
         </div>
 
         <div class="players">
             <label for="p1">Player 1</label><br>
-            <input type="password" name="p1" id="p1" placeholder="Enter your number here"><br>
+            <input type="password" name="p1" id="p1" placeholder="  Enter your number here"><br>
 
-            <label for="p2">Player 2</label ><br>
-            <input type="password" name="p2" id="p2" placeholder="Enter your number here"><br>
+            <label for="p2">Player 2</label><br>
+            <input type="password" name="p2" id="p2" placeholder="  Enter your number here"><br>
 
             <label for="p3">Player 3</label><br>
-            <input type="password" name="p3" id="p3" placeholder="Enter your number here"><br>
+            <input type="password" name="p3" id="p3" placeholder="  Enter your number here"><br>
 
             <label for="p4">Player 4</label><br>
-            <input type="password" name="p4" id="p4" placeholder="Enter your number here">
+            <input type="password" name="p4" id="p4" placeholder="  Enter your number here">
         </div>
 
     </div>
